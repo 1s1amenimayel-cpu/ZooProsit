@@ -4,11 +4,8 @@ public class ZooManagement {
 
 
     public static void main(String[] args) {
-     /*   int nbrCages=20;
-        String zooName="my Zoo";
 
-        System.out.println(" Le Zoo "+zooName+" est composé de "+nbrCages+" cages");
-*/
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Veuillez entrer le nom du zoo");
@@ -27,26 +24,43 @@ public class ZooManagement {
         Animal lion = new Animal("Felidae", "lion",2,true);
         Animal chat = new Animal("Félidés ","leo",1,true);
         Animal oiseau = new Animal("Corvidés", "name",1, false);
-        /*lion.family= "Felidae";
-        lion.name = "lion";
-        lion.age = 2;
-        lion.isMammal= true;*/
+        Animal lion2 = new Animal("Felidae", "lion", 2, true);
         Animal[] animals= new Animal[25];
-        animals[0] = lion;
-        animals[1] = chat;
-        animals[2] = oiseau;
-        Zoo myZoo= new Zoo("zoo","Tunis",20, animals);
-        /*myZoo.animals = new Animal[25];
-        myZoo.name = "zoo";
-        myZoo.city = "Tunis";
-        myZoo.nbrCages = 20;*/
+
+        Zoo myZoo= new Zoo("zoo","Tunis", animals);
+        System.out.println(myZoo.addAnimal(lion));
+        System.out.println(myZoo.addAnimal(chat));
+        System.out.println(myZoo.addAnimal(oiseau));
+        System.out.println(myZoo.searchAnimal("lion"));
+
 
     myZoo.displayZoo();
-    System.out.println(myZoo);
+    /*System.out.println(myZoo);
     System.out.println(myZoo.toString());
-    System.out.println(lion);
+    System.out.println(lion);*/
+    System.out.println("indice de lion:" +myZoo.searchAnimal("lion"));
+    System.out.println("Indice du tigre : " + myZoo.searchAnimal("tigre"));
+    System.out.println("Avant suppression :");
+        myZoo.displayAnimals();
+        System.out.println("Suppression du lion : "
+                + myZoo.removeAnimal(lion));
 
+        System.out.println("Après suppression :");
+        myZoo.displayAnimals();
+        System.out.println("Zoo plein ? " + myZoo.isZooFull());
 
+        Zoo zoo1 = new Zoo("Zoo Tunis", "Tunis", new Animal[25]);
+        Zoo zoo2 = new Zoo("Zoo Sousse", "Sousse", new Animal[25]);
+
+        zoo1.addAnimal(lion);
+        zoo1.addAnimal(chat);
+
+        zoo2.addAnimal(oiseau);
+
+        Zoo zooPlusPeuple = Zoo.comparerZoo(zoo1, zoo2);
+
+        System.out.println("Le zoo avec le plus d'animaux est : "
+                + zooPlusPeuple.name);
 
 
 
